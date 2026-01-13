@@ -25,7 +25,7 @@ const products = [
   }
 ];
 
-export default function Body() {
+export default function Bojo() {
   const navigate = useNavigate();
 
   const addToCart = (product) => {
