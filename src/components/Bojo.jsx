@@ -1,15 +1,46 @@
 import "../assets/CSS/global.css";
+import { useNavigate } from "react-router-dom";
 
 const products = [
-  { id: 1, name: "Produto Fashion", price: "R$ 199,90", img: "https://picsum.photos/300/300?1" },
-  { id: 2, name: "Produto Exemplo", price: "R$ 149,90", img: "https://picsum.photos/300/300?2" },
-  { id: 3, name: "Produto Premium", price: "R$ 299,90", img: "https://picsum.photos/300/300?3" },
-  { id: 4, name: "Novo Produto", price: "R$ 179,90", img: "https://picsum.photos/300/300?4" },
-  { id: 5, name: "Produto Destaque", price: "R$ 249,90", img: "https://picsum.photos/300/300?5" },
-  { id: 6, name: "Produto Trend", price: "R$ 219,90", img: "https://picsum.photos/300/300?6" }
+  {
+    id: 1,
+    name: "Produto Fashion",
+    price: "R$ 199,90",
+    img: "https://picsum.photos/300/300?1",
+    description: "Produto fashion de alta qualidade, moderno e confortável."
+  },
+  {
+    id: 2,
+    name: "Produto Exemplo",
+    price: "R$ 149,90",
+    img: "https://picsum.photos/300/300?2",
+    description: "Produto exemplo com ótimo custo-benefício."
+  },
+  {
+    id: 3,
+    name: "Produto Premium",
+    price: "R$ 299,90",
+    img: "https://picsum.photos/300/300?3",
+    description: "Linha premium com acabamento sofisticado."
+  }
 ];
 
 export default function Body() {
+  const navigate = useNavigate();
+
+  const addToCart = (product) => {
+    console.log("Adicionado ao carrinho:", product);
+    navigate("/cart");
+  };
+
+  const buyNow = (product) => {
+    navigate("/checkout", { state: product });
+  };
+
+  const viewProduct = (product) => {
+    navigate(`/product/${product.id}`, { state: product });
+  };
+
   return (
     <main className="container">
 
@@ -21,29 +52,40 @@ export default function Body() {
         </div>
       </section>
 
-      {/* Destaques */}
-      <section className="features">
-        <div className="feature-card">
-          <h3>Cores Ilimitadas</h3>
-          <p>Personalização total de layout e identidade visual.</p>
-        </div>
-        <div className="feature-card">
-          <h3>Layout Responsivo</h3>
-          <p>Compatível com desktop, tablet e mobile.</p>
-        </div>
-        <div className="feature-card">
-          <h3>Produtos Dinâmicos</h3>
-          <p>Fácil integração com APIs e banco de dados.</p>
-        </div>
-      </section>
-
       {/* Produtos */}
       <section className="products">
         {products.map(product => (
           <div className="product-card" key={product.id}>
+
+            {/* Botão Carrinho */}
+            <button
+              className="add-cart"
+              onClick={() => addToCart(product)}
+            >
+              🛒
+            </button>
+
             <img src={product.img} alt={product.name} />
             <h4>{product.name}</h4>
             <span>{product.price}</span>
+
+            {/* Ações */}
+            <div className="product-actions">
+              <button
+                className="buy"
+                onClick={() => buyNow(product)}
+              >
+                Comprar agora
+              </button>
+
+              <button
+                className="view"
+                onClick={() => viewProduct(product)}
+              >
+                Ver produto
+              </button>
+            </div>
+
           </div>
         ))}
       </section>
