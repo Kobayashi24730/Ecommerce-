@@ -1,47 +1,31 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import "../assets/CSS/global.css";
+import { useNavigate } from "react-router-dom";
 
-import Aro from "./components/Aro";
-import Bojo from "./components/Bojo";
-import Product from "./components/Product";
-import Cart from "./components/Cart";
-
-function App() {
-  const [cartItems, setCartItems] = useState([]);
-  const [cartOpen, setCartOpen] = useState(false);
-
-  const addToCart = (product) => {
-    setCartItems(prev => [...prev, product]);
-    setCartOpen(true);
-  };
-
-  const removeFromCart = (index) => {
-    setCartItems(prev => prev.filter((_, i) => i !== index));
-  };
+export default function Aro({ onCartClick }) {
+  const navigate = useNavigate();
 
   return (
-    <BrowserRouter>
+    <header className="header">
+      <div className="header-container">
 
-      {/* MENU FIXO */}
-      <Aro onCartClick={() => setCartOpen(true)} />
+        <div className="logo" onClick={() => navigate("/")}>
+          <h2>MinhaLoja</h2>
+        </div>
 
-      {/* CARRINHO LATERAL */}
-      <Cart
-        open={cartOpen}
-        onClose={() => setCartOpen(false)}
-        items={cartItems}
-        removeFromCart={removeFromCart}
-      />
+        <nav className="menu">
+          <button onClick={() => navigate("/")}>Home</button>
+          <button onClick={() => navigate("/categoria/feminino")}>Feminino</button>
+          <button onClick={() => navigate("/categoria/masculino")}>Masculino</button>
+          <button onClick={() => navigate("/categoria/eletronicos")}>Eletrônicos</button>
+          <button onClick={() => navigate("/contato")}>Contato</button>
+        </nav>
 
-      {/* ROTAS */}
-      <Routes>
-        <Route path="/" element={<Bojo addToCart={addToCart} />} />
-        <Route path="/product/:id" element={<Product />} />
-        <Route path="/checkout" element={<h1>Checkout</h1>} />
-      </Routes>
+        <div className="actions">
+          <input type="text" placeholder="Buscar produtos..." />
+          <button className="cart" onClick={onCartClick}>🛒</button>
+        </div>
 
-    </BrowserRouter>
+      </div>
+    </header>
   );
 }
-
-export default App;
