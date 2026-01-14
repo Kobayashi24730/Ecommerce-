@@ -1,7 +1,7 @@
 import "../assets/CSS/global.css";
 import { useNavigate } from "react-router-dom";
 
-export default function Header() {
+export default function Header({ onCartClick })  {
   const navigate = useNavigate();
 
   const goToCart = () => {
@@ -31,7 +31,7 @@ export default function Header() {
           <input type="text" placeholder="Buscar produtos..." />
 
           {/* Botão Carrinho */}
-          <button className="cart" onClick={goToCart}>
+          <button className="cart" onClick={onCartClick}>🛒</button>
             🛒
           </button>
         </div>
