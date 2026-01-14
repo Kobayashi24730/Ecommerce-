@@ -25,16 +25,12 @@ const products = [
   }
 ];
 
-export default function Bojo() {
+export default function Bojo({ addToCart }) {
   const navigate = useNavigate();
 
-  const addToCart = (product) => {
-    console.log("Adicionado ao carrinho:", product);
-    navigate("/cart");
-  };
-
+  // Comprar agora → checkout.php
   const buyNow = (product) => {
-    navigate("/checkout", { state: product });
+    window.location.href = `/checkout.php?id=${product.id}`;
   };
 
   const viewProduct = (product) => {
@@ -61,13 +57,17 @@ export default function Bojo() {
             <button
               className="add-cart"
               onClick={() => addToCart(product)}
+              title="Adicionar ao carrinho"
             >
               🛒
             </button>
 
             <img src={product.img} alt={product.name} />
-            <h4>{product.name}</h4>
-            <span>{product.price}</span>
+
+            <div className="product-info">
+              <h4>{product.name}</h4>
+              <span className="price">{product.price}</span>
+            </div>
 
             {/* Ações */}
             <div className="product-actions">
@@ -92,4 +92,4 @@ export default function Bojo() {
 
     </main>
   );
-}
+            }
