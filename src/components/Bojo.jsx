@@ -1,3 +1,27 @@
+import "../assets/CSS/global.css";
+import { useNavigate } from "react-router-dom";
+
+const products = [
+  {
+    id: 1,
+    name: "Produto Fashion",
+    price: "R$ 199,90",
+    img: "https://picsum.photos/300/300?1"
+  },
+  {
+    id: 2,
+    name: "Produto Exemplo",
+    price: "R$ 149,90",
+    img: "https://picsum.photos/300/300?2"
+  },
+  {
+    id: 3,
+    name: "Produto Premium",
+    price: "R$ 299,90",
+    img: "https://picsum.photos/300/300?3"
+  }
+];
+
 export default function Bojo({ addToCart }) {
   const navigate = useNavigate();
 
