@@ -1,21 +1,44 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Aro from "./components/Aro";     // Menu (Header)
-import Bojo from "./components/Bojo";   // Home
+import { useState } from "react";
+
+import Aro from "./components/Aro";
+import Bojo from "./components/Bojo";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
 
 function App() {
+  const [cartItems, setCartItems] = useState([]);
+  const [cartOpen, setCartOpen] = useState(false);
+
+  // Adicionar produto
+  const addToCart = (product) => {
+    setCartItems(prev => [...prev, product]);
+    setCartOpen(true); // abre o carrinho
+  };
+
+  // Remover produto
+  const removeFromCart = (index) => {
+    setCartItems(prev => prev.filter((_, i) => i !== index));
+  };
+
   return (
     <BrowserRouter>
 
       {/* MENU FIXO */}
-      <Aro />
+      <Aro onCartClick={() => setCartOpen(true)} />
 
-      {/* CONTEÚDO */}
+      {/* CARRINHO LATERAL */}
+      <Cart
+        open={cartOpen}
+        onClose={() => setCartOpen(false)}
+        items={cartItems}
+        removeFromCart={removeFromCart}
+      />
+
+      {/* ROTAS */}
       <Routes>
-        <Route path="/" element={<Bojo />} />
+        <Route path="/" element={<Bojo addToCart={addToCart} />} />
         <Route path="/product/:id" element={<Product />} />
-        <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<h1>Checkout</h1>} />
       </Routes>
 
