@@ -3,175 +3,132 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-  background-color: #f8f8f8;
+  background: #f7f7f7;
   color: #333;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-
-.banner {
-  width: 100%;
+/* HERO */
+.hero {
   height: 420px;
-  background-image: url("https://images.unsplash.com/photo-1521334884684-d80222895322");
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  margin-bottom: 50px;
+  background: linear-gradient(
+      rgba(0,0,0,0.4),
+      rgba(0,0,0,0.4)
+    ),
+    url("https://picsum.photos/1200/500") center/cover;
+  display: flex;
+  align-items: center;
 }
 
-.banner-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.55),
-    rgba(0, 0, 0, 0.15)
-  );
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 60px;
+.hero-content {
+  margin-left: 80px;
   color: #fff;
 }
 
-.banner-overlay h1 {
+.hero-content h1 {
   font-size: 48px;
-  font-weight: 700;
   margin-bottom: 10px;
 }
 
-.banner-overlay p {
+.hero-content p {
   font-size: 18px;
-  max-width: 420px;
-  opacity: 0.9;
+  margin-bottom: 20px;
 }
 
-.products {
+.hero-content button {
+  padding: 12px 24px;
+  background: #e91e63;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* FEATURES */
+.features {
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  padding: 40px 20px;
+}
+
+.feature {
+  font-size: 16px;
+  font-weight: bold;
+  color: #555;
+}
+
+/* PRODUTOS */
+.products-container {
+  padding: 60px 80px;
+}
+
+.products-container h2 {
+  margin-bottom: 30px;
+}
+
+.products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 30px;
 }
 
 .product-card {
   background: #fff;
-  border: 1px solid #eaeaea;
   padding: 15px;
   position: relative;
-  transition: all 0.3s ease;
+  border: 1px solid #eee;
+  transition: 0.3s;
 }
 
 .product-card:hover {
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
-  transform: translateY(-4px);
+  transform: translateY(-5px);
 }
 
-.add-cart {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  border: none;
-  background: #ff4f81;
-  color: #fff;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background 0.3s;
-}
-
-.add-cart:hover {
-  background: #e63a6d;
-}
-
-/* IMAGEM */
 .product-card img {
   width: 100%;
-  height: 280px;
+  height: 260px;
   object-fit: cover;
-  margin-bottom: 15px;
 }
 
-/* TEXTO */
 .product-card h4 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 5px;
+  margin: 10px 0;
 }
 
-.product-card span {
-  font-size: 15px;
-  color: #ff4f81;
-  font-weight: 600;
+.price {
+  color: #1abc9c;
+  font-weight: bold;
 }
 
-/* AÇÕES */
-.product-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.product-actions button {
-  flex: 1;
-  padding: 10px;
+/* BOTÃO CARRINHO */
+.add-cart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #000;
+  color: #fff;
   border: none;
+  padding: 8px;
   cursor: pointer;
-  font-size: 14px;
-  transition: all 0.3s ease;
 }
 
-/* COMPRAR */
-.product-actions .buy {
+/* ACTIONS */
+.product-actions button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px;
+  border: none;
   background: #333;
   color: #fff;
-}
-
-.product-actions .buy:hover {
-  background: #000;
-}
-
-/* VER */
-.product-actions .view {
-  background: #f2f2f2;
-  color: #333;
-}
-
-.product-actions .view:hover {
-  background: #ddd;
-}
-
-/* ===================== */
-/* RESPONSIVO */
-/* ===================== */
-@media (max-width: 768px) {
-  .banner {
-    height: 300px;
-  }
-
-  .banner-overlay {
-    padding-left: 25px;
-  }
-
-  .banner-overlay h1 {
-    font-size: 34px;
-  }
-
-  .banner-overlay p {
-    font-size: 16px;
-  }
+  cursor: pointer;
 }
 
 
+
+  
 
 
 
