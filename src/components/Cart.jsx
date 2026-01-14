@@ -1,6 +1,6 @@
 import "../assets/CSS/global.css";
 
-export default function CartSidebar({ isOpen, onClose, cartItems, onRemove, onBuy }) {
+export default function Cart({ isOpen, onClose, cartItems, onRemove, onBuy }) {
   return (
     <div className={`cart-sidebar ${isOpen ? "open" : ""}`}>
       
