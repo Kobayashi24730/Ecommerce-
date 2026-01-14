@@ -1,42 +1,29 @@
-import "../assets/CSS/global.css";
-
-export default function Cart({ isOpen, onClose, cartItems, onRemove, onBuy }) {
+export default function Cart({ open, onClose, items, removeFromCart }) {
   return (
-    <div className={`cart-sidebar ${isOpen ? "open" : ""}`}>
-      
-      {/* Header */}
+    <aside className={`cart-sidebar ${open ? "open" : ""}`}>
       <div className="cart-header">
         <h3>Carrinho</h3>
         <button onClick={onClose}>✖</button>
       </div>
 
-      {/* Itens */}
-      <div className="cart-items">
-        {cartItems.length === 0 ? (
-          <p className="empty">Carrinho vazio</p>
-        ) : (
-          cartItems.map((item, index) => (
-            <div className="cart-item" key={index}>
-              <img src={item.img} alt={item.name} />
-              <div>
-                <h4>{item.name}</h4>
-                <span>{item.price}</span>
-              </div>
-              <button onClick={() => onRemove(index)}>🗑</button>
-            </div>
-          ))
-        )}
-      </div>
+      {items.length === 0 && <p>Carrinho vazio</p>}
 
-      {/* Ações */}
-      {cartItems.length > 0 && (
-        <div className="cart-actions">
-          <button className="buy" onClick={onBuy}>
-            Comprar
-          </button>
+      {items.map((item, index) => (
+        <div className="cart-item" key={index}>
+          <img src={item.img} />
+          <div>
+            <h4>{item.name}</h4>
+            <span>{item.price}</span>
+          </div>
+          <button onClick={() => removeFromCart(index)}>🗑</button>
         </div>
-      )}
+      ))}
 
-    </div>
+      {items.length > 0 && (
+        <a href="/checkout.php" className="checkout-btn">
+          Comprar
+        </a>
+      )}
+    </aside>
   );
 }
