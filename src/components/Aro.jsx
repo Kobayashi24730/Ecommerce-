@@ -1,29 +1,25 @@
 import "../assets/CSS/global.css";
 import { useNavigate } from "react-router-dom";
 
-export default function Header({ onCartClick })  {
+export default function Aro({ onCartClick }) {
   const navigate = useNavigate();
-
-  const goToCart = () => {
-    navigate("/cart");
-  };
 
   return (
     <header className="header">
       <div className="header-container">
 
         {/* Logo */}
-        <div className="logo">
+        <div className="logo" onClick={() => navigate("/")}>
           <h2>MinhaLoja</h2>
         </div>
 
         {/* Menu */}
         <nav className="menu">
-          <a href="#">Home</a>
-          <a href="#">Feminino</a>
-          <a href="#">Masculino</a>
-          <a href="#">Eletrônicos</a>
-          <a href="#">Contato</a>
+          <button onClick={() => navigate("/")}>Home</button>
+          <button onClick={() => navigate("/categoria/feminino")}>Feminino</button>
+          <button onClick={() => navigate("/categoria/masculino")}>Masculino</button>
+          <button onClick={() => navigate("/categoria/eletronicos")}>Eletrônicos</button>
+          <button onClick={() => navigate("/contato")}>Contato</button>
         </nav>
 
         {/* Ações */}
@@ -31,7 +27,7 @@ export default function Header({ onCartClick })  {
           <input type="text" placeholder="Buscar produtos..." />
 
           {/* Botão Carrinho */}
-          <button className="cart" onClick={onCartClick}>🛒</button>
+          <button className="cart" onClick={onCartClick}>
             🛒
           </button>
         </div>
@@ -39,4 +35,4 @@ export default function Header({ onCartClick })  {
       </div>
     </header>
   );
-}
+          }
