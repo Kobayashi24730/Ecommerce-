@@ -239,57 +239,51 @@ body {
 
 .header {
   width: 100%;
-  background: #ffffff;
-  border-bottom: 1px solid #e0e0e0;
+  background: #fff;
+  border-bottom: 1px solid #eee;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 100;
 }
 
 .header-container {
   max-width: 1200px;
   margin: auto;
   padding: 15px 20px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* Logo */
-.logo h2 {
-  color: #009688;
-  font-size: 24px;
+/* LOGO */
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: "Georgia", serif;
 }
 
-/* Menu */
+/* MENU */
 .menu {
   display: flex;
-  gap: 25px;
+  gap: 20px;
 }
 
-.menu a {
-  text-decoration: none;
+.menu button {
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
   color: #333;
-  font-weight: 500;
-  position: relative;
+  text-transform: uppercase;
 }
 
-.menu a::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background: #009688;
-  left: 0;
-  bottom: -5px;
-  transition: width 0.3s;
+.menu button:hover {
+  color: #e91e63;
 }
 
-.menu a:hover::after {
-  width: 100%;
-}
-
-/* Ações */
+/* ACTIONS */
 .actions {
   display: flex;
   align-items: center;
@@ -297,30 +291,18 @@ body {
 }
 
 .actions input {
-  padding: 7px 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  outline: none;
 }
 
+/* CART */
 .cart {
-  background: #009688;
+  background: #000;
   color: #fff;
   border: none;
   padding: 8px 12px;
-  border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
 }
-
-/* Responsivo */
-@media (max-width: 768px) {
-  .menu {
-    display: none;
-  }
-
-  .actions input {
-    display: none;
-  }
-}
-
-
 
