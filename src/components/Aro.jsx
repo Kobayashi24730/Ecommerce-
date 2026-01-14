@@ -1,6 +1,13 @@
 import "../assets/CSS/global.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+  const navigate = useNavigate();
+
+  const goToCart = () => {
+    navigate("/cart");
+  };
+
   return (
     <header className="header">
       <div className="header-container">
@@ -22,7 +29,11 @@ export default function Header() {
         {/* Ações */}
         <div className="actions">
           <input type="text" placeholder="Buscar produtos..." />
-          <button className="cart">🛒</button>
+
+          {/* Botão Carrinho */}
+          <button className="cart" onClick={goToCart}>
+            🛒
+          </button>
         </div>
 
       </div>
