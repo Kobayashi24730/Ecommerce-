@@ -8,20 +8,23 @@ export default function Aro({ onCartClick }) {
     <header className="header">
       <div className="header-container">
 
+        {/* LOGO */}
         <div className="logo" onClick={() => navigate("/")}>
-          <h2>MinhaLoja</h2>
+          MinhaLoja
         </div>
 
+        {/* MENU */}
         <nav className="menu">
           <button onClick={() => navigate("/")}>Home</button>
-          <button onClick={() => navigate("/categoria/feminino")}>Feminino</button>
-          <button onClick={() => navigate("/categoria/masculino")}>Masculino</button>
-          <button onClick={() => navigate("/categoria/eletronicos")}>Eletrônicos</button>
-          <button onClick={() => navigate("/contato")}>Contato</button>
+          <button onClick={() => navigate("/categoria/feminino")}>Women</button>
+          <button onClick={() => navigate("/categoria/masculino")}>Men</button>
+          <button onClick={() => navigate("/categoria/eletronicos")}>Electronics</button>
+          <button onClick={() => navigate("/contato")}>Contact</button>
         </nav>
 
+        {/* AÇÕES */}
         <div className="actions">
-          <input type="text" placeholder="Buscar produtos..." />
+          <input type="text" placeholder="Search products..." />
           <button className="cart" onClick={onCartClick}>🛒</button>
         </div>
 
