@@ -1,40 +1,19 @@
 import "../assets/CSS/global.css";
 import { useNavigate } from "react-router-dom";
 
-const products = [
-  {
-    id: 1,
-    name: "Produto Fashion",
-    price: "R$ 199,90",
-    img: "https://picsum.photos/400/400?1"
-  },
-  {
-    id: 2,
-    name: "Produto Exemplo",
-    price: "R$ 149,90",
-    img: "https://picsum.photos/400/400?2"
-  },
-  {
-    id: 3,
-    name: "Produto Premium",
-    price: "R$ 299,90",
-    img: "https://picsum.photos/400/400?3"
-  },
-  {
-    id: 4,
-    name: "Produto Casual",
-    price: "R$ 129,90",
-    img: "https://picsum.photos/400/400?4"
-  }
-];
 
 export default function Bojo({ addToCart }) {
   const navigate = useNavigate();
+  const [product, setProduct] = useState([]);
+  useEffect(() => (
+	  fetch("http://localhost:3000/products")
+	    .then(res => res.json())
+	    .then(data => setProduct(data));
+  ), []);
 
   return (
     <main className="home">
 
-      {/* HERO / BANNER */}
       <section className="hero">
         <div className="hero-content">
           <h1>Responsive</h1>
@@ -45,14 +24,12 @@ export default function Bojo({ addToCart }) {
         </div>
       </section>
 
-      {/* FEATURES */}
       <section className="features">
         <div className="feature">🎨 Unlimited Colors</div>
         <div className="feature">📱 Responsive Layout</div>
         <div className="feature">🧭 Mega Menu</div>
       </section>
 
-      {/* PRODUTOS */}
       <section className="products-container">
         <h2>Produtos em destaque</h2>
 

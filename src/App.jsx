@@ -5,18 +5,18 @@ import Aro from "./components/Aro";
 import Bojo from "./components/Bojo";
 import Product from "./components/Product";
 import Cart from "./components/Cart";
+import Checkout from "./assets/Checkout";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
 
-  // Adicionar produto
   const addToCart = (product) => {
     setCartItems(prev => [...prev, product]);
-    setCartOpen(true); // abre o carrinho
+    setCartOpen(true); 
   };
 
-  // Remover produto
+
   const removeFromCart = (index) => {
     setCartItems(prev => prev.filter((_, i) => i !== index));
   };
@@ -24,10 +24,9 @@ function App() {
   return (
     <BrowserRouter>
 
-      {/* MENU FIXO */}
       <Aro onCartClick={() => setCartOpen(true)} />
 
-      {/* CARRINHO LATERAL */}
+
       <Cart
         open={cartOpen}
         onClose={() => setCartOpen(false)}
@@ -35,7 +34,7 @@ function App() {
         removeFromCart={removeFromCart}
       />
 
-      {/* ROTAS */}
+
       <Routes>
         <Route path="/" element={<Bojo addToCart={addToCart} />} />
         <Route path="/product/:id" element={<Product />} />
